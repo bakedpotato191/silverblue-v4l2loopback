@@ -1,0 +1,17 @@
+[Unit]
+Description=Containerized v4l2loopback kernel module
+After=NetworkManager-wait-online.service
+Wants=NetworkManager-wait-online.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/sysconfig/silverblue-v4l2loopback
+TimeoutStartSec=25m
+RemainAfterExit=true
+ExecStartPre=/usr/local/sbin/silverblue-v4l2loopback-module build
+ExecStart=/usr/local/sbin/silverblue-v4l2loopback-module load
+ExecReload=/usr/local/sbin/silverblue-v4l2loopback-module reload
+ExecStop=/usr/local/sbin/silverblue-v4l2loopback-module unload
+
+[Install]
+WantedBy=graphical.target
