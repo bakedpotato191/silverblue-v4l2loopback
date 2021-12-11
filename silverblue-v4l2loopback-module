@@ -97,7 +97,7 @@ unload_v4l2loopback()
 check(){
   podman run --name v4l2loopback -e "V4L2LOOPBACK_VERSION=${V4L2LOOPBACK_VERSION}" \
     -e "V4L2LOOPBACK_KERNEL_VERSION=${V4L2LOOPBACK_KERNEL_VERSION}" --rm --privileged \
-    ${V4L2LOOPBACK_IMAGE}:${V4L2LOOPBACK_IMAGETAG} \
+    v4l2loopback:"${V4L2LOOPBACK_VERSION}" \
     /usr/bin/v4l2-ctl --list-devices
 }
 
