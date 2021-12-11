@@ -5,7 +5,6 @@ Wants=NetworkManager-wait-online.service
 
 [Service]
 Type=oneshot
-EnvironmentFile=/etc/sysconfig/silverblue-v4l2loopback
 TimeoutStartSec=25m
 RemainAfterExit=true
 ExecStartPre=/usr/local/sbin/silverblue-v4l2loopback-module build
