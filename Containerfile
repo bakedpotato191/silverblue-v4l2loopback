@@ -21,7 +21,7 @@ RUN cd /tmp/koji && \
     dnf clean all -y
     
     
-RUN curl -LS https://github.com/bakedpotato191/v4l2loopback/archive/v${V4L2LOOPBACK_VERSION}.tar.gz| \
+RUN curl -LS https://github.com/umlaeute/v4l2loopback/tarball/master| \
     { t="$(mktemp)"; trap "rm -f '$t'" INT TERM EXIT; cat >| "$t"; sha256sum --quiet -c <<<"${V4L2LOOPBACK_SHA256} $t" \
     || exit 1; cat "$t"; } | tar xzf -
 
